@@ -1,1 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Device Repair Tracker Demo</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-container">
+    <header>
+      <h1>Device Repair Tracker</h1>
+      <p>Track your device repair status by IMEI or Work ID</p>
+    </header>
 
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Enter IMEI or Work ID..." />
+      <button onclick="searchRepair()">Search</button>
+    </div>
+
+    <div id="resultContainer" class="result hidden">
+      <h2>Repair Status</h2>
+      <p><strong>IMEI:</strong> <span id="imei"></span></p>
+      <p><strong>Work ID:</strong> <span id="workId"></span></p>
+      <p><strong>Device:</strong> <span id="deviceName"></span></p>
+      <p><strong>Status:</strong> <span id="status"></span></p>
+      <div class="progress-bar">
+        <div class="step" id="step-intransit">In-Transit</div>
+        <div class="step" id="step-warehouse">Warehouse</div>
+        <div class="step" id="step-service">Service Centre</div>
+        <div class="step" id="step-repaired">Repaired</div>
+        <div class="step" id="step-completed">Completed</div>
+      </div>
+    </div>
+
+    <footer>
+      <p>Demo Project | The Supplier by Óptane</p>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html
