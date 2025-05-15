@@ -3,31 +3,31 @@
     {
       "imei": "123456789012345",
       "workId": "WID001",
-      "device": "Samsung Galaxy A12",
+      "device": "Samsung Galaxy A16 5G 8GB 128GB Black",
       "status": "Warehouse"
     },
     {
       "imei": "987654321098765",
       "workId": "WID002",
-      "device": "Redmi Note 10",
+      "device": "Redmi Note 14 5G 8GB 256GB Lavender Purple",
       "status": "Service"
     },
     {
       "imei": "111122223333444",
       "workId": "WID003",
-      "device": "iPhone 12",
+      "device": "iPhone 12 5G 128GB Blue",
       "status": "Completed"
     },
     {
       "imei": "555566667777888",
       "workId": "WID004",
-      "device": "Realme C25Y",
+      "device": "Vivo Y19s 6GB 128GB Silver",
       "status": "Intransit"
     },
     {
       "imei": "999900001111222",
       "workId": "WID005",
-      "device": "Motorola G52",
+      "device": "Motorola G85 12GB 256GB Cobalt Blue",
       "status": "Repaired"
     }
   ]
