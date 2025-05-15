@@ -1,1 +1,34 @@
-
+{
+  "repairs": [
+    {
+      "imei": "123456789012345",
+      "workId": "WID001",
+      "device": "Samsung Galaxy A12",
+      "status": "Warehouse"
+    },
+    {
+      "imei": "987654321098765",
+      "workId": "WID002",
+      "device": "Redmi Note 10",
+      "status": "Service"
+    },
+    {
+      "imei": "111122223333444",
+      "workId": "WID003",
+      "device": "iPhone 12",
+      "status": "Completed"
+    },
+    {
+      "imei": "555566667777888",
+      "workId": "WID004",
+      "device": "Realme C25Y",
+      "status": "Intransit"
+    },
+    {
+      "imei": "999900001111222",
+      "workId": "WID005",
+      "device": "Motorola G52",
+      "status": "Repaired"
+    }
+  ]
+}
