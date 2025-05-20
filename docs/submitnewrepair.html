@@ -141,7 +141,7 @@
     });
 
     try {
-      const response = await fetch('https://sisko.replit.dev/submit', {
+      const response = await fetch('https://00314e93-fc44-45fa-8da4-80801a3da9af-00-6qb8xw8tcfcq.sisko.replit.dev/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -152,8 +152,8 @@
       const result = await response.json();
 
       if (response.ok) {
-        // Redirect to workid screen with returned WorkID as query param (optional)
-        window.location.href = `workidscreen.html?workid=${result.workId}`;
+        // Redirect to workid screen with returned workid as query param (optional)
+        window.location.href = `workidscreen.html?workid=${result.workid}`;
       } else {
         alert('Submission failed: ' + result.message);
       }
