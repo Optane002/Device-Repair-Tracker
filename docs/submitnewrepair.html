@@ -6,6 +6,64 @@
   <title>Submit New Repair</title>
   <link rel="stylesheet" href="css/form.css" />
 </head>
+<script>
+  function toggleServiceCenter() {
+    const locationType = document.getElementById('LocationType').value;
+    const serviceCenterGroup = document.getElementById('serviceCenterGroup');
+    serviceCenterGroup.style.display = (locationType === 'courier') ? 'block' : 'none';
+  }
+
+  async function submitRepair(event) {
+    event.preventDefault(); // Stop default page redirect
+
+    const imei = document.getElementById("imei").value.trim();
+    const customerName = document.getElementById("customername").value.trim();
+    const customerNumber = document.getElementById("customernumber").value.trim();
+    const agentName = document.getElementById("agentname").value.trim();
+    const faultDesc = document.getElementById("faultydesciption").value.trim();
+    const deviceCond = document.getElementById("devicecondition").value.trim();
+    const location = document.getElementById("Location").value.trim();
+    const locationType = document.getElementById("LocationType").value.trim();
+    const serviceCenter = document.getElementById("serviceCenter").value.trim();
+
+    const imageFile = document.getElementById("imageUpload").files[0];
+
+    if (!imei || !customerName || !imageFile) {
+      alert("Please fill in all required fields including image.");
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("imei", imei);
+    formData.append("customerName", customerName);
+    formData.append("customerNumber", customerNumber);
+    formData.append("agentName", agentName);
+    formData.append("faultDesc", faultDesc);
+    formData.append("deviceCond", deviceCond);
+    formData.append("location", location);
+    formData.append("locationType", locationType);
+    formData.append("serviceCenter", serviceCenter);
+    formData.append("image", imageFile);
+
+    try {
+      const response = await fetch('https://your-replit-name.replit.app/submit', {
+        method: 'POST',
+        body: formData
+      });
+
+      if (response.ok) {
+        alert("Repair submitted successfully!");
+        window.location.href = "workidscreen.html"; // redirect to Work ID page
+      } else {
+        const error = await response.text();
+        alert("Submission failed: " + error);
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      alert("An error occurred while submitting the form.");
+    }
+  }
+</script>
 <body>
   <a href="index.html" class="back-button">&larr; Back</a>
   <div class="container">
