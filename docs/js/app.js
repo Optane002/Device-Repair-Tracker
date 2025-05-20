@@ -6,7 +6,7 @@ async function searchRepair() {
   const response = await fetch('repairs.json');
   const data = await response.json();
   const result = data.repairs.find(
-    (r) => r.imei === input || r.workId === input
+    (r) => r.imei === input || r.workid === input
   );
 
   const container = document.getElementById('resultContainer');
@@ -17,7 +17,7 @@ async function searchRepair() {
   }
 
   document.getElementById('imeiDisplay').textContent = result.imei;
-  document.getElementById('workIdDisplay').textContent = result.workId;
+  document.getElementById('workidDisplay').textContent = result.workid;
   document.getElementById('deviceNameDisplay').textContent = result.device;
   document.getElementById('statusDisplay').textContent = result.status;
 
@@ -42,7 +42,7 @@ async function searchRepair() {
   container.classList.remove('hidden');
 }
 
-// ✅ New: Handle form submission from submitnewrepair.html
+// New: Handle form submission from submitnewrepair.html
 function submitRepair(event) {
   event.preventDefault(); // Prevent page reload
 
