@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Track Device Status</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <a href="index.html" class="back-button">&larr; Back</a>
+
+  <div class="container center-text">
+    <h1 class="main-heading">Device Repair Tracker</h1>
+    <p class="tagline">Fast. Reliable. Trackable.</p>
+
+    <div class="search-container">
+      <input type="text" id="searchInput" placeholder="Enter IMEI or Work ID" />
+      <button onclick="searchRepair()">Search</button>
+    </div>
+
+    <div id="resultContainer" class="result-box hidden">
+      <h3>Repair Details</h3>
+      <p><strong>IMEI:</strong> <span id="imei"></span></p>
+      <p><strong>Work ID:</strong> <span id="workId"></span></p>
+      <p><strong>Device:</strong> <span id="deviceName"></span></p>
+      <p><strong>Status:</strong> <span id="status"></span></p>
+
+      <div class="progress-steps">
+        <span id="step-intransit">In Transit</span>
+        <span id="step-warehouse">Warehouse</span>
+        <span id="step-service">Service Centre</span>
+        <span id="step-repaired">Repaired</span>
+        <span id="step-completed">Completed</span>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
