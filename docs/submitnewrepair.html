@@ -122,13 +122,48 @@
       <button type="submit" onclick="submitRepair(event)">Submit</button>
     </form>
   </div>
-
   <script>
-    function toggleServiceCenter() {
-      const locationType = document.getElementById('LocationType').value;
-      const serviceCenterGroup = document.getElementById('serviceCenterGroup');
-      serviceCenterGroup.style.display = (locationType === 'courier') ? 'block' : 'none';
+  function toggleServiceCenter() {
+    const locationType = document.getElementById('LocationType').value;
+    const serviceCenterGroup = document.getElementById('serviceCenterGroup');
+    serviceCenterGroup.style.display = (locationType === 'courier') ? 'block' : 'none';
+  }
+
+  async function submitRepair(event) {
+    event.preventDefault(); // Prevents form from submitting the traditional way
+
+    const form = document.getElementById('repairForm');
+    const formData = new FormData(form);
+
+    const payload = {};
+    formData.forEach((value, key) => {
+      payload[key] = value;
+    });
+
+    try {
+      const response = await fetch('https://sisko.replit.dev/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        // Redirect to workid screen with returned WorkID as query param (optional)
+        window.location.href = `workidscreen.html?workid=${result.workId}`;
+      } else {
+        alert('Submission failed: ' + result.message);
+      }
+    } catch (error) {
+      alert('Submission failed: ' + error.message);
     }
-  </script>
+  }
+
+  // Attach event listener to form
+  document.getElementById('repairForm').addEventListener('submit', submitRepair);
+</script>
 </body>
 </html>
