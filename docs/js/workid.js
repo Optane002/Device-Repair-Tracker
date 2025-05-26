@@ -1,11 +1,13 @@
 // workid.js
 setTimeout(() => {
   document.getElementById("imei").value = "354293098765432";
+  document.getElementById("brand").value = "Samsung"
+  document.getElementById("model").value = "A56 5G 8GB 256GB Black"
   document.getElementById("customername").value = "Chamicara De Silva";
   document.getElementById("customernumber").value = "+94777777777";
   document.getElementById("faultydesciption").value = "Screen flickering, occasional shutdown";
   document.getElementById("devicecondition").value = "No physical damage, some dust inside";
-  document.getElementById("agentname").value = "Chamicara De Silva";
+  document.getElementById("agentname").value = "Senura De Silva";
   document.getElementById("Location").value = "Nawala";
   document.getElementById("LocationType").value = "warehouse";
   
