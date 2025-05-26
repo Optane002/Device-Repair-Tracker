@@ -13,44 +13,67 @@
     <h1 class="main-heading">Confirm Courier Handover</h1>
     <p class="tagline">Please confirm you've handed over the device to the courier.</p>
 
-    <div class="result-box">
+    <div class="result-box" id="handoverBox">
       <h3>Repair Order Summary</h3>
       <p><strong>Work ID:</strong> <span id="workId">Loading...</span></p>
       <p><strong>IMEI Number:</strong> <span id="imei">Loading...</span></p>
-      <p><strong>Device Brand:</strong> <span id="deviceName">Loading...</span></p>
-      <p><strong>Device Model:</strong> <span id="deviceName">Loading...</span></p>
-      <p><strong>Customer Name:</strong> <span id="deviceName">Loading...</span></p>
-      <p><strong>Agent Name:</strong> <span id="deviceName">Loading...</span></p>
+      <p><strong>Device Brand:</strong> <span id="brand">Loading...</span></p>
+      <p><strong>Device Model:</strong> <span id="model">Loading...</span></p>
+      <p><strong>Customer Name:</strong> <span id="csutomername">Loading...</span></p>
+      <p><strong>Agent Name:</strong> <span id="agentname">Loading...</span></p>
       <p><strong>Submitted On:</strong> <span id="submittedDate">Loading...</span></p>
 
       <div style="margin-top: 30px; text-align: center;">
-        <button class="action-button" onclick="confirmHandover()">Confirm Handover</button>
+        <button class="action-button" id="confirmBtn" onclick="confirmHandover()">Confirm Handover</button>
+        <p id="alreadyConfirmedMsg" style="color: green; font-weight: bold; display: none; margin-top: 20px;">
+          ✅ This Work ID has already been confirmed.
+        </p>
       </div>
     </div>
   </div>
 
   <script>
-    // Simulated data fetch (replace with actual logic or API calls)
+    // Simulated data fetch
     const repairOrder = {
       workId: "WRK-20250526-001",
       imei: "354123456789012",
-      device: "Samsung Galaxy S21",
+      brand: "Samsung",
+      model: "A56 5G 8GB 256GB Black",
+      customername: "Chamicara",
+      agentname: "Senura",
       submittedOn: "2025-05-26"
     };
 
+    // Load data into the page
     window.onload = function () {
       document.getElementById('workId').textContent = repairOrder.workId;
       document.getElementById('imei').textContent = repairOrder.imei;
-      document.getElementById('deviceName').textContent = repairOrder.device;
+      document.getElementById('brand').textContent = repairOrder.brand;
+      document.getElementById('model').textContent = repairOrder.model;
+      document.getElementById('customername').textContent = repairOrder.customername;
+      document.getElementById('agentname').textContent = repairOrder.agentname;
       document.getElementById('submittedDate').textContent = repairOrder.submittedOn;
+
+      // Check if handover was already confirmed
+      const confirmed = localStorage.getItem("handover_" + repairOrder.workId);
+      if (confirmed === "true") {
+        showAlreadyConfirmed();
+      }
     };
 
     function confirmHandover() {
-      alert("Handover confirmed! ✅");
-      // TODO: Replace this with an actual fetch call to update backend
-      // fetch('/api/confirm-handover', { method: 'POST', body: JSON.stringify(repairOrder) })
+      // Save status in localStorage
+      localStorage.setItem("handover_" + repairOrder.workId, "true");
+
+      // Update UI
+      showAlreadyConfirmed();
+      alert("✅ Handover confirmed!");
+    }
+
+    function showAlreadyConfirmed() {
+      document.getElementById("confirmBtn").style.display = "none";
+      document.getElementById("alreadyConfirmedMsg").style.display = "block";
     }
   </script>
 </body>
 </html>
-
