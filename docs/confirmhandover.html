@@ -1,1 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Confirm Courier Handover</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <a href="index.html" class="back-button">&larr; Back</a>
+
+  <div class="container">
+    <h1 class="main-heading">Confirm Courier Handover</h1>
+    <p class="tagline">Please confirm you've handed over the device to the courier.</p>
+
+    <div class="result-box">
+      <h3>Repair Order Summary</h3>
+      <p><strong>Work ID:</strong> <span id="workId">Loading...</span></p>
+      <p><strong>IMEI Number:</strong> <span id="imei">Loading...</span></p>
+      <p><strong>Device Brand:</strong> <span id="deviceName">Loading...</span></p>
+      <p><strong>Device Model:</strong> <span id="deviceName">Loading...</span></p>
+      <p><strong>Customer Name:</strong> <span id="deviceName">Loading...</span></p>
+      <p><strong>Agent Name:</strong> <span id="deviceName">Loading...</span></p>
+      <p><strong>Submitted On:</strong> <span id="submittedDate">Loading...</span></p>
+
+      <div style="margin-top: 30px; text-align: center;">
+        <button class="action-button" onclick="confirmHandover()">Confirm Handover</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Simulated data fetch (replace with actual logic or API calls)
+    const repairOrder = {
+      workId: "WRK-20250526-001",
+      imei: "354123456789012",
+      device: "Samsung Galaxy S21",
+      submittedOn: "2025-05-26"
+    };
+
+    window.onload = function () {
+      document.getElementById('workId').textContent = repairOrder.workId;
+      document.getElementById('imei').textContent = repairOrder.imei;
+      document.getElementById('deviceName').textContent = repairOrder.device;
+      document.getElementById('submittedDate').textContent = repairOrder.submittedOn;
+    };
+
+    function confirmHandover() {
+      alert("Handover confirmed! ✅");
+      // TODO: Replace this with an actual fetch call to update backend
+      // fetch('/api/confirm-handover', { method: 'POST', body: JSON.stringify(repairOrder) })
+    }
+  </script>
+</body>
+</html>
 
