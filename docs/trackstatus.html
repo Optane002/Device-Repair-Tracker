@@ -22,7 +22,11 @@
       <h3>Repair Details</h3>
       <p><strong>IMEI:</strong> <span id="imei"></span></p>
       <p><strong>Work ID:</strong> <span id="workId"></span></p>
-      <p><strong>Device:</strong> <span id="deviceName"></span></p>
+      <p><strong>Brand:</strong> <span id="brand"></span></p>
+      <p><strong>Model:</strong> <span id="model"></span></p>
+      <p><strong>Customer Name:</strong> <span id="customername"></span></p>
+      <p><strong>Agent Name:</strong> <span id="agentname"></span></p>
+      <p><strong>Submitted Date:</strong> <span id="submittedDate"></span></p>
       <p><strong>Status:</strong> <span id="status"></span></p>
 
       <div class="progress-steps">
@@ -35,6 +39,81 @@
     </div>
   </div>
 
-  <script src="js/app.js"></script>
+  <script>
+    function searchRepair() {
+      const input = document.getElementById('searchInput').value.trim();
+      if (!input) return alert("Please enter a valid IMEI or Work ID.");
+
+      let resultData = null;
+      let matchedKey = null;
+
+      // Try to find data by checking all status_ keys
+      for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if (key.startsWith("status_")) {
+          const data = JSON.parse(localStorage.getItem(key));
+          if (key.includes(input) || data.imei === input) {
+            resultData = data;
+            matchedKey = key;
+            break;
+          }
+        }
+      }
+
+      if (resultData) {
+        const workId = matchedKey.replace("status_", "");
+        document.getElementById("imei").textContent = resultData.imei;
+        document.getElementById("workId").textContent = workId;
+        document.getElementById("brand").textContent = resultData.brand;
+        document.getElementById("model").textContent = resultData.model;
+        document.getElementById("customername").textContent = resultData.customername;
+        document.getElementById("agentname").textContent = resultData.agentname;
+        document.getElementById("submittedDate").textContent = resultData.submittedOn;
+        document.getElementById("status").textContent = resultData.status;
+
+        updateProgressUI(resultData.status);
+        document.getElementById("resultContainer").classList.remove("hidden");
+      } else {
+        alert("No repair record found for that IMEI or Work ID.");
+      }
+    }
+
+    function updateProgressUI(status) {
+      const steps = {
+        "In Transit": "step-intransit",
+        "Warehouse": "step-warehouse",
+        "Service Centre": "step-service",
+        "Repaired": "step-repaired",
+        "Completed": "step-completed"
+      };
+
+      for (const stepId of Object.values(steps)) {
+        document.getElementById(stepId).classList.remove("active-step");
+      }
+
+      if (steps[status]) {
+        document.getElementById(steps[status]).classList.add("active-step");
+      }
+    }
+  </script>
+  <style>
+    .progress-steps {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+      padding: 0 10px;
+    }
+    .progress-steps span {
+      flex: 1;
+      text-align: center;
+      padding: 8px;
+      border-bottom: 2px solid #ccc;
+    }
+    .progress-steps .active-step {
+      color: green;
+      font-weight: bold;
+      border-color: green;
+    }
+  </style>
 </body>
 </html>
