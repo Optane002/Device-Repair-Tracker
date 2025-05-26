@@ -33,7 +33,6 @@
   </div>
 
   <script>
-    // Simulated data fetch
     const repairOrder = {
       workId: "WRK-20250526-001",
       imei: "354123456789012",
@@ -44,7 +43,6 @@
       submittedOn: "2025-05-26"
     };
 
-    // Load data into the page
     window.onload = function () {
       document.getElementById('workId').textContent = repairOrder.workId;
       document.getElementById('imei').textContent = repairOrder.imei;
@@ -54,7 +52,6 @@
       document.getElementById('agentname').textContent = repairOrder.agentname;
       document.getElementById('submittedDate').textContent = repairOrder.submittedOn;
 
-      // Check if handover was already confirmed
       const confirmed = localStorage.getItem("handover_" + repairOrder.workId);
       if (confirmed === "true") {
         showAlreadyConfirmed();
@@ -62,10 +59,16 @@
     };
 
     function confirmHandover() {
-      // Save status in localStorage
       localStorage.setItem("handover_" + repairOrder.workId, "true");
 
-      // Update UI
+      const statusData = {
+        imei: repairOrder.imei,
+        status: "In Transit",
+        brand: repairOrder.brand,
+        model: repairOrder.model
+      };
+      localStorage.setItem("status_" + repairOrder.workId, JSON.stringify(statusData));
+
       showAlreadyConfirmed();
       alert("✅ Handover confirmed!");
     }
