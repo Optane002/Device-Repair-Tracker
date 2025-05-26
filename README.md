@@ -7,7 +7,7 @@ Welcome to the GitHub demo of the **Device Repair Tracker** Created by Chamicara
 
 This Full-Stack version simulates the original Power Apps solution using just HTML, CSS, JS, and JSON—ideal for showcasing functionality and UI on GitHub Pages.
 
-🔗 **Live Demo**: [Device Repair Tracker]()
+🔗 **Live Demo**: [Device Repair Tracker](https://optane002.github.io/Device-Repair-Tracker/)
 
 ---
 
@@ -47,7 +47,7 @@ The project mimics 5 core screens from the original Power App:
 
 ## ⚙️ How to Use
 
-1. Visit the [Live Demo]()
+1. Visit the [Live Demo](https://optane002.github.io/Device-Repair-Tracker/)
 2. Navigate through different screens
 3. Enter IMEI or Work ID to simulate tracking(Use IMEI's or WorkID's Included in repairs.json file)
 
