@@ -18,7 +18,11 @@ async function searchRepair() {
 
   document.getElementById('imeiDisplay').textContent = result.imei;
   document.getElementById('workidDisplay').textContent = result.workid;
-  document.getElementById('deviceNameDisplay').textContent = result.device;
+  document.getElementById('brandDisplay').textcontent = result.brand;
+  document.getElementById('modelDisplay').textcontent = result.model;
+  documemt.getElementById('customernameDisplay').textcontent = result.customername;
+  doucment.getElementById('customernumber').textcontent = result.customernumber
+  document.getElementById('agentname').textContent = result.agentname;
   document.getElementById('statusDisplay').textContent = result.status;
 
   const steps = [
@@ -48,6 +52,8 @@ function submitRepair(event) {
 
   // Gather form input values
   const imei = document.getElementById("imei").value.trim();
+  const brand = document.getElementById("brand").value.trim();
+  const model = document.getElementByID("model").value.trim();
   const customerName = document.getElementById("customername").value.trim();
   const customerNumber = document.getElementById("customernumber").value.trim();
   const agentName = document.getElementById("agentname").value.trim();
@@ -66,11 +72,13 @@ function submitRepair(event) {
   // For now: just print to console
   console.log("Repair Submitted:", {
     imei,
+    brand,
+    model,
     customerName,
     customerNumber,
     agentName,
-    faultDesc,
-    deviceCond,
+    faultydesciption,
+    devicecondition,
     location,
     locationType,
     serviceCenter,
